@@ -1,3 +1,17 @@
 .left-panel
   .left-panel-header
     JCBs
+  - @reputations.each do |reputation|
+    .reputation
+      .sender-name
+        = reputation.sender.name
+      %span.glyphicon.glyphicon-thumbs-up
+      .receiver-name
+        = reputation.receiver.name
+      at
+      .date
+        = reputation.created_at.strftime("%Y-%m-%d")
+
+  .left-panel-footer.clearfix
+    .paginate
+      = paginate @reputations
