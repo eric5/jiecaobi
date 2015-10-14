@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap";
+
+body {
+  background-color: #eee;
+}
+
+html.turbolinks-progress-bar::before {
+  height: 2px !important;
+}
