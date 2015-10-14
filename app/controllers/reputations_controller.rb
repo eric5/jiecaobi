@@ -11,7 +11,7 @@ class ReputationsController < ApplicationController
       flash[:success] = "Thank you!"
       redirect_to root_path
     else
-      flash[:error] = "Sorry, you didn't send a JCB to your colleague, please do it again."
+      flash[:error] = "Sorry, please check your input."
       render :new
     end
   end
