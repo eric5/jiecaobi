@@ -1,4 +1,7 @@
 class ReputationsController < ApplicationController
+  before_filter :monthly_reputation_limitation, only: [:create]
+
+  MONTHLY_JCB_NUMBER = 10
 
   def new
     @reputation = Reputation.new
@@ -19,5 +22,12 @@ class ReputationsController < ApplicationController
   private
   def reputation_params
     params.require(:reputation).permit(:receiver_id, :sender_id, :reason)
+  end
+
+  def monthly_reputation_limitation
+    if Reputation.monthly_limitation(current_user).length > MONTHLY_JCB_NUMBER
+      flash[:error] = "You have used all your JCB in this month."
+      redirect_to root_path
+    end
   end
 end
