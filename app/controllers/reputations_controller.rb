@@ -1,5 +1,6 @@
 class ReputationsController < ApplicationController
   before_filter :monthly_reputation_limitation, only: [:create]
+  before_filter :authenticate_user
 
   MONTHLY_JCB_NUMBER = 10
 
