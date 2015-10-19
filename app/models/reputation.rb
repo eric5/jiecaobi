@@ -5,4 +5,6 @@ class Reputation < ActiveRecord::Base
   belongs_to :sender, class_name: "User"
 
   scope :monthly_limitation, ->(user) { where(sender: user).where(created_at: Date.today.beginning_of_month..Date.today.end_of_month) }
+
+  paginates_per 10
 end
