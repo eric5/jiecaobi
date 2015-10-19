@@ -13,4 +13,4 @@
             .form-group
               = f.label :recevier_id, class: 'control-label'
               = f.select :receiver_id, User.where.not(id: current_user.id).collect { |u| [u.name, u.id] }, {}, { class: 'form-control' }
-            = f.submit 'I want to give it my colleague', class: 'btn btn-success'
+            = f.submit 'I want to give it my colleague', class: 'btn btn-success', ":data-disable-with": 'Please wait...'
