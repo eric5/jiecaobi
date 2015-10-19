@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :authenticate_user, only: [:edit, :update]
 
   def new
     @user = User.new
@@ -13,6 +14,16 @@ class UsersController < ApplicationController
       flash[:error] = "Please check your input."
       render :new
     end
+  end
+
+  def edit
+    @user = current_user
+  end
+
+  def update
+    current_user.update_attribute(:name, user_params[:name])
+    flash[:success] = "Your name has been changed."
+    render :edit
   end
 
   private
