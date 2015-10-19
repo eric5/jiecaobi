@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151013143919) do
+ActiveRecord::Schema.define(version: 20151019151420) do
 
   create_table "reputations", force: :cascade do |t|
     t.integer  "receiver_id", limit: 4
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20151013143919) do
   end
 
   add_index "reputations", ["receiver_id"], name: "index_reputations_on_receiver_id", using: :btree
+  add_index "reputations", ["sender_id", "created_at"], name: "index_reputations_on_sender_id_and_created_at", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",           limit: 255
