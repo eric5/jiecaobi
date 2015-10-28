@@ -26,7 +26,7 @@ class ReputationsController < ApplicationController
   end
 
   def monthly_reputation_limitation
-    if Reputation.monthly_limitation(current_user).length > MONTHLY_JCB_NUMBER
+    if Reputation.monthly_limitation(current_user).length >= MONTHLY_JCB_NUMBER
       flash[:error] = "You have used all your JCB in this month."
       redirect_to root_path
     end
