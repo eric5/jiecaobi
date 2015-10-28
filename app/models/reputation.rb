@@ -6,5 +6,5 @@ class Reputation < ActiveRecord::Base
 
   scope :monthly_limitation, ->(user) { where(sender: user).where(created_at: Date.today.beginning_of_month..Date.today.end_of_month) }
 
-  paginates_per 10
+  paginates_per 25
 end
