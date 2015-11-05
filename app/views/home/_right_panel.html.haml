@@ -9,6 +9,8 @@
       Want give a JCB to someone?
 
 .right-panel
+  %h4
+    = Time.now.last_month.strftime("%Y-%m")
   - @users.each do |user|
     %p
       = user.name
