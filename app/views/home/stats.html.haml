@@ -1,0 +1,22 @@
+.container
+  .row
+    .col-md-9
+      .left-panel
+        .left-panel-header
+          %p
+            = Time.now.last_month.strftime("%Y-%m")
+          - @users.each do |user|
+            %p
+              %h4
+                = user.name
+                (
+                = user.reputations.last_month.length
+                )
+              - user.reputations.each do |r|
+                %p
+                  "
+                  = r.reason
+                  " from
+                  = r.sender.name
+    .col-md-3
+      = render 'right_panel'
