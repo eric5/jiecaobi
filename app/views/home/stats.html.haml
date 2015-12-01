@@ -12,7 +12,7 @@
                 (
                 = user.reputations.last_month.length
                 )
-              - user.reputations.each do |r|
+              - user.reputations.last_month.each do |r|
                 %p
                   "
                   = r.reason
